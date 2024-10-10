@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import PlaceOrderPage from "./pages/PlaceOrderPage";
 import OrdersPage from "./pages/OrdersPage";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -26,6 +27,8 @@ function App() {
         <Route path="/place-order" element={<PlaceOrderPage />} />
         <Route path="/order" element={<OrdersPage />} />
       </Routes>
+
+      <Footer />
     </div>
   );
 }
