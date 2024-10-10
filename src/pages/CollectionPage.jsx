@@ -19,6 +19,7 @@ const CollectionPage = () => {
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
+  const [sortType, setSortType] = useState("relavent");
 
   const toggleCategory = (e) => {
     if (category.includes(e.target.value)) {
@@ -54,13 +55,31 @@ const CollectionPage = () => {
     setFilterProducts(productsCopy);
   };
 
-  useEffect(() => {
-    setFilterProducts(products);
-  }, []);
+  const sortProduct = () => {
+    let filterCopy = filterProducts.slice();
+
+    switch (sortType) {
+      case "low-high":
+        setFilterProducts(filterCopy.sort((a, b) => a.price - b.price));
+        break;
+
+      case "high-low":
+        setFilterProducts(filterCopy.sort((a, b) => b.price - a.price));
+        break;
+
+      default:
+        applyFilter();
+        break;
+    }
+  };
 
   useEffect(() => {
     applyFilter();
   }, [category, subCategory]);
+
+  useEffect(() => {
+    sortProduct();
+  }, [sortType]);
 
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
@@ -141,15 +160,18 @@ const CollectionPage = () => {
           <Title text1={"ALL "} text2={"COLLECTIONS"} />
 
           {/* product sort */}
-          <Select className="border-2 border-gray-300 text-sm px-2">
+          <Select
+            className="border-2 border-gray-300 text-sm px-2"
+            onValueChange={setSortType}
+          >
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="Sort by:" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem value="relavent">Sort by: Relavent</SelectItem>
-                <SelectItem value="low-high">Sort by: Low to High</SelectItem>
-                <SelectItem value="high-low">Sort by: High to Low</SelectItem>
+                <SelectItem value="relavent">Relavent</SelectItem>
+                <SelectItem value="low-high">Low to High</SelectItem>
+                <SelectItem value="high-low">High to Low</SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
