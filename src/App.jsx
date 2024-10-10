@@ -11,10 +11,12 @@ import OrdersPage from "./pages/OrdersPage";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SearchBar from "./components/SearchBar";
+import { Toaster } from "./components/ui/toaster";
 
 function App() {
   return (
     <div className="px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]">
+      <Toaster />
       <Navbar />
 
       <SearchBar />

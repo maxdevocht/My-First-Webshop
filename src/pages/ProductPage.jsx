@@ -9,7 +9,7 @@ import RelatedProducts from "@/components/RelatedProducts";
 
 const ProductPage = () => {
   const { productId } = useParams();
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
@@ -19,7 +19,6 @@ const ProductPage = () => {
       if (item._id === productId.trim()) {
         setProductData(item);
         setImage(item.image[0]);
-        console.log(item);
         return null;
       }
     });
@@ -93,7 +92,12 @@ const ProductPage = () => {
             </div>
           </div>
 
-          <Button className="rounded-xl ">ADD TO CART</Button>
+          <Button
+            onClick={() => addToCart(productData._id, size)}
+            className="rounded-xl "
+          >
+            ADD TO CART
+          </Button>
           <hr className="mt-8 sm:w-4/5" />
 
           <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
