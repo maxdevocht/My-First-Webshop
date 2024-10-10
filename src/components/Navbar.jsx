@@ -62,7 +62,7 @@ const Navbar = () => {
 
         <Link to="/cart" className="relative">
           <ShoppingBasket className="cursor-pointer" />
-          <p className="absolute right-[-5px] bottom-[-5px] w-4 leading-4 text-center bg-blue-600 text-white aspect-square rounded-full text-[10px]">
+          <p className="absolute right-[-5px] bottom-[-5px] w-4 leading-4 text-center bg-peach-600 text-white aspect-square rounded-full text-[10px]">
             10
           </p>
         </Link>
