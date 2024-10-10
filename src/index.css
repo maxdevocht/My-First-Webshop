@@ -18,6 +18,11 @@ a.active hr {
     font-style: normal;
 }
 
+.shadows {
+    box-shadow: 10px 10px 30px #bebebe,
+        -10px -10px 30px #ffffff;
+}
+
 @media (max-width: 640px) {
     a.active {
         background-color: black;

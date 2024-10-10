@@ -15,12 +15,12 @@ const Navbar = () => {
   const [visible, setVisible] = useState(false);
 
   return (
-    <div className="flex items-center justify-between py-5 font-medium">
+    <div className="flex items-center justify-between py-5 font-medium mb-8">
       <Link to="/">
         <img src={assets.logo} alt="Logo" width={36} />
       </Link>
 
-      <ul className="hidden sm:flex gap-5 text-sm text-gray-700">
+      <ul className="hidden sm:flex items-center gap-5 text-sm text-gray-700">
         <NavLink to="/" className="flex flex-col items-center gap-1">
           <p>HOME</p>
           <hr className="w-2/4 border-none h-[1.5px] bg-gray-700 hidden" />
@@ -45,7 +45,7 @@ const Navbar = () => {
           <DropdownMenuTrigger>
             <User className="cursor-pointer" />
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
+          <DropdownMenuContent className="mt-2">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="cursor-pointer">
