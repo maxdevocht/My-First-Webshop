@@ -19,8 +19,8 @@ a.active hr {
 }
 
 .shadows {
-    box-shadow: 10px 10px 30px #bebebe,
-        -10px -10px 30px #ffffff;
+    box-shadow: 5px 5px 15px #bebebe,
+        -5px -5px 15px #ffffff;
 }
 
 @media (max-width: 640px) {
