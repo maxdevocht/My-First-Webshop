@@ -11,7 +11,7 @@ const Hero = () => {
             <p className="w-8 md:w-11 h-[2px] bg-[#414141]"></p>
             <Button
               variant="secondary"
-              className="font-medium text-sm md:text-base"
+              className="font-medium text-sm md:text-base rounded-xl"
             >
               OUR BESTSELLERS
             </Button>
@@ -21,7 +21,7 @@ const Hero = () => {
             Latest Arrivals
           </h1>
           <div className="flex items-center gap-2">
-            <Button className="font-semibold text-sm md:text-base">
+            <Button className="font-semibold text-sm md:text-base rounded-xl">
               SHOP NOW
             </Button>
             <p className="w-8 md:w-11 h-[2px] bg-[#414141]"></p>

@@ -16,15 +16,15 @@ const NewsletterBox = () => {
 
       <form
         onSubmit={onSubmitHandler}
-        className="w-full sm:w-1/2 flex items-center gap-3 m-auto my-6 border pl-3"
+        className="w-full sm:w-1/2 flex items-center gap-3 m-auto my-6 border pl-3 rounded-xl"
       >
         <input
-          className="w-full flex-1 outline-none"
+          className="w-full flex-1 outline-none "
           type="email"
           placeholder="Enter your email"
           required
         />
-        <Button type="submit" className="text-xs px-10 py-4">
+        <Button type="submit" className="text-xs px-10 py-4 rounded-xl">
           SUBSCRIBE
         </Button>
       </form>

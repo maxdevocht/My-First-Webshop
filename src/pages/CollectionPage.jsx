@@ -99,7 +99,7 @@ const CollectionPage = () => {
         <div
           className={`border border-gray-300 pl-5 py-3 mt-6 ${
             showFilter ? "" : "hidden"
-          } sm:block`}
+          } sm:block rounded-xl`}
         >
           <p className="mb-3 text-sm font-medium">CATEGORIES</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
@@ -128,7 +128,7 @@ const CollectionPage = () => {
         <div
           className={`border border-gray-300 pl-5 py-3 my-5 ${
             showFilter ? "" : "hidden"
-          } sm:block`}
+          } sm:block rounded-xl`}
         >
           <p className="mb-3 text-sm font-medium">TYPE</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
@@ -164,7 +164,7 @@ const CollectionPage = () => {
             className="border-2 border-gray-300 text-sm px-2"
             onValueChange={setSortType}
           >
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-[180px] rounded-xl">
               <SelectValue placeholder="Sort by:" />
             </SelectTrigger>
             <SelectContent>
