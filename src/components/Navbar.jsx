@@ -9,10 +9,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ShopContext } from "@/context/ShopContext";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
+  const { setShowSearch } = useContext(ShopContext);
 
   return (
     <div className="flex items-center justify-between py-5 font-medium mb-4">
@@ -40,7 +42,10 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center gap-6">
-        <Search className="cursor-pointer" />
+        <Search
+          className="cursor-pointer"
+          onClick={() => setShowSearch(true)}
+        />
         <DropdownMenu>
           <DropdownMenuTrigger>
             <User className="cursor-pointer" />
