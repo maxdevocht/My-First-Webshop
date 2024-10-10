@@ -17,10 +17,50 @@ const CollectionPage = () => {
   const { products } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
+  const [category, setCategory] = useState([]);
+  const [subCategory, setSubCategory] = useState([]);
+
+  const toggleCategory = (e) => {
+    if (category.includes(e.target.value)) {
+      setCategory((prev) => prev.filter((item) => item !== e.target.value));
+    } else {
+      setCategory((prev) => [...prev, e.target.value]);
+    }
+  };
+
+  const toggleSubCategory = (e) => {
+    if (subCategory.includes(e.target.value)) {
+      setSubCategory((prev) => prev.filter((item) => item !== e.target.value));
+    } else {
+      setSubCategory((prev) => [...prev, e.target.value]);
+    }
+  };
+
+  const applyFilter = () => {
+    let productsCopy = products.slice();
+
+    if (category.length > 0) {
+      productsCopy = productsCopy.filter((item) =>
+        category.includes(item.category)
+      );
+    }
+
+    if (subCategory.length > 0) {
+      productsCopy = productsCopy.filter((item) =>
+        subCategory.includes(item.subCategory)
+      );
+    }
+
+    setFilterProducts(productsCopy);
+  };
 
   useEffect(() => {
     setFilterProducts(products);
   }, []);
+
+  useEffect(() => {
+    applyFilter();
+  }, [category, subCategory]);
 
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
@@ -45,19 +85,19 @@ const CollectionPage = () => {
           <p className="mb-3 text-sm font-medium">CATEGORIES</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
             <p className="flex gap-2 ">
-              <Checkbox value={"Men"} />
+              <Checkbox value={"Men"} onClick={toggleCategory} />
               <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Men
               </label>
             </p>
             <p className="flex gap-2 ">
-              <Checkbox value={"Women"} />
+              <Checkbox value={"Women"} onClick={toggleCategory} />
               <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Women
               </label>
             </p>
             <p className="flex gap-2 ">
-              <Checkbox value={"Kids"} />
+              <Checkbox value={"Kids"} onClick={toggleCategory} />
               <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Kids
               </label>
@@ -74,19 +114,19 @@ const CollectionPage = () => {
           <p className="mb-3 text-sm font-medium">TYPE</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
             <p className="flex gap-2 ">
-              <Checkbox value={"Topwear"} />
+              <Checkbox value={"Topwear"} onClick={toggleSubCategory} />
               <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Topwear
               </label>
             </p>
             <p className="flex gap-2 ">
-              <Checkbox value={"Bottomwear"} />
+              <Checkbox value={"Bottomwear"} onClick={toggleSubCategory} />
               <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Bottomwear
               </label>
             </p>
             <p className="flex gap-2 ">
-              <Checkbox value={"Winterwear"} />
+              <Checkbox value={"Winterwear"} onClick={toggleSubCategory} />
               <label className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Winterwear
               </label>
