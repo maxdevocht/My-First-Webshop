@@ -37,7 +37,7 @@ const ProductPage = () => {
   }
 
   return productData ? (
-    <div className="border-t-2 pt-10 transition-opacity ease-in duration-500 opacity-100">
+    <div className="border-t pt-10 transition-opacity ease-in duration-500 opacity-100">
       {/* product data */}
       <div className="flex gap-12 flex-col sm:flex-row">
         {/* product images */}
