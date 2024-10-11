@@ -14,7 +14,18 @@ import { ShopContext } from "@/context/ShopContext";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
-  const { setShowSearch, getCartCount } = useContext(ShopContext);
+  const { setShowSearch, getCartCount, isLoggedIn, navigate } =
+    useContext(ShopContext);
+
+  const handleUserClick = () => {
+    if (isLoggedIn) {
+      // Navigate to the dropdown menu options if logged in
+      // You might want to do something else to show the dropdown here
+    } else {
+      // Redirect to the login page if not logged in
+      navigate("/login");
+    }
+  };
 
   return (
     <div className="flex items-center justify-between py-5 font-medium mb-4">
@@ -48,21 +59,25 @@ const Navbar = () => {
         />
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <User className="cursor-pointer" />
+            <Link to="/login">
+              <User className="cursor-pointer" onClick={handleUserClick} />
+            </Link>
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="mt-2">
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem className="cursor-pointer">
-              Profile
-            </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer">
-              Orders
-            </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer">
-              Log out
-            </DropdownMenuItem>
-          </DropdownMenuContent>
+          {isLoggedIn && ( // Only show dropdown if logged in
+            <DropdownMenuContent className="mt-2">
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="cursor-pointer">
+                Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">
+                Orders
+              </DropdownMenuItem>
+              <DropdownMenuItem className="cursor-pointer">
+                Log out
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          )}
         </DropdownMenu>
 
         <Link to="/cart" className="relative">
