@@ -14,7 +14,7 @@ import { ShopContext } from "@/context/ShopContext";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
-  const { setShowSearch } = useContext(ShopContext);
+  const { setShowSearch, getCartCount } = useContext(ShopContext);
 
   return (
     <div className="flex items-center justify-between py-5 font-medium mb-4">
@@ -68,7 +68,7 @@ const Navbar = () => {
         <Link to="/cart" className="relative">
           <ShoppingBasket className="cursor-pointer" />
           <p className="absolute right-[-5px] bottom-[-5px] w-4 leading-4 text-center bg-peach-600 text-white aspect-square rounded-full text-[10px]">
-            10
+            {getCartCount()}
           </p>
         </Link>
 

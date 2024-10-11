@@ -35,9 +35,22 @@ const ShopContextProvider = (props) => {
     setCardItems(cartData);
   };
 
-  useEffect(() => {
-    console.log(cardItems);
-  }, [cardItems]);
+  const getCartCount = () => {
+    let totalCount = 0;
+
+    for (const items in cardItems) {
+      for (const item in cardItems[items]) {
+        try {
+          if (cardItems[items][item] > 0) {
+            totalCount += cardItems[items][item];
+          }
+        } catch (error) {
+          console.error("Error in getCartCount:", error);
+        }
+      }
+    }
+    return totalCount; // The return should be placed outside the loop.
+  };
 
   const value = {
     products,
@@ -49,6 +62,7 @@ const ShopContextProvider = (props) => {
     setShowSearch,
     cardItems,
     addToCart,
+    getCartCount,
   };
 
   return (
