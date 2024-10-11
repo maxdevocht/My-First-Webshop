@@ -7,7 +7,6 @@ import {
   ToastTitle,
   ToastViewport,
 } from "@/components/ui/toast";
-import { CircleAlert } from "lucide-react";
 
 export function Toaster() {
   const { toasts } = useToast();
@@ -18,7 +17,6 @@ export function Toaster() {
         return (
           <Toast key={id} {...props} className="rounded-xl bg-[#f5503e]">
             <div className="flex items-center gap-2">
-              <CircleAlert />
               {title && <ToastTitle>{title}</ToastTitle>}
               {description && (
                 <ToastDescription>{description}</ToastDescription>
