@@ -9,7 +9,7 @@ const ShopContextProvider = (props) => {
   const delivery_fee = 10;
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
-  const [cardItems, setCardItems] = useState({});
+  const [cartItems, setCartItems] = useState({});
   const { toast } = useToast();
 
   const addToCart = async (itemId, size) => {
@@ -20,7 +20,7 @@ const ShopContextProvider = (props) => {
       });
       return;
     }
-    let cartData = structuredClone(cardItems);
+    let cartData = structuredClone(cartItems);
 
     if (cartData[itemId]) {
       if (cartData[itemId][size]) {
@@ -32,17 +32,17 @@ const ShopContextProvider = (props) => {
       cartData[itemId] = {};
       cartData[itemId][size] = 1;
     }
-    setCardItems(cartData);
+    setCartItems(cartData);
   };
 
   const getCartCount = () => {
     let totalCount = 0;
 
-    for (const items in cardItems) {
-      for (const item in cardItems[items]) {
+    for (const items in cartItems) {
+      for (const item in cartItems[items]) {
         try {
-          if (cardItems[items][item] > 0) {
-            totalCount += cardItems[items][item];
+          if (cartItems[items][item] > 0) {
+            totalCount += cartItems[items][item];
           }
         } catch (error) {
           console.error("Error in getCartCount:", error);
@@ -50,6 +50,14 @@ const ShopContextProvider = (props) => {
       }
     }
     return totalCount; // The return should be placed outside the loop.
+  };
+
+  const updateQuantity = async (itemId, size, quantity) => {
+    let cartData = structuredClone(cartItems);
+
+    cartData[itemId][size] = quantity;
+
+    setCartItems(cartData);
   };
 
   const value = {
@@ -60,9 +68,10 @@ const ShopContextProvider = (props) => {
     setSearch,
     showSearch,
     setShowSearch,
-    cardItems,
+    cartItems,
     addToCart,
     getCartCount,
+    updateQuantity,
   };
 
   return (
